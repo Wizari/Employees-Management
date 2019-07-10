@@ -1,16 +1,23 @@
 package org.r78.employeesmanagement.controller;
 
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.r78.employeesmanagement.domain.Department;
+import org.r78.employeesmanagement.repositories.IDepartmentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class DepartmentController {
+    @Autowired
+    IDepartmentRepository departmentRepository;
+
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
-//    @GetMapping("/")
     public String index() {
+
+        String departmentList = this.departmentRepository.getAll().toString();
 
         return "<html>\n" +
                 "<head>\n" +
@@ -20,11 +27,10 @@ public class DepartmentController {
                 "</head>\n" +
                 "<body>\n" +
                 "<h1>\n" +
-                "Hello, world!\n" +
+                departmentList +
                 "</h1>\n" +
                 "</body>\n" +
                 "</html>";
     }
-
 
 }
