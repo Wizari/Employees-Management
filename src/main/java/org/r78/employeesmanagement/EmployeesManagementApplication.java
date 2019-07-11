@@ -40,8 +40,8 @@ public class EmployeesManagementApplication {
             departmentB.setId(2L);
             log.debug(departmentB.toString());
 //            Department departmentC = new Department();
-//            departmentC.setId(3L);
-//            departmentC.setName("C");
+//            departmentC.setId(0L);
+//            departmentC.setName("Zero");
 //            departmentRepository.add(departmentC);
 
             Position programmer = new Position();

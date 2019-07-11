@@ -1,9 +1,12 @@
 package org.r78.employeesmanagement.utils;
 
 import org.r78.employeesmanagement.domain.Department;
+import org.springframework.stereotype.Component;
 
+import java.util.Collection;
 import java.util.List;
 
+@Component
 public class DepartmentTableGenerator implements IDepartmentTableGenerator {
 
     @Override
@@ -15,7 +18,7 @@ public class DepartmentTableGenerator implements IDepartmentTableGenerator {
                 "" + department.getId().toString() +
                 "</td>\n" +
                 "    <td>" +
-                "" + department.getName() +
+                "" + department.getName()  +
                 "</td>\n" +
                 "</tr>\n";
 
@@ -26,8 +29,8 @@ public class DepartmentTableGenerator implements IDepartmentTableGenerator {
     }
 
     @Override
-    public String convertToTable(List<Department> departmentsList) {
-        String result = "<table width=\"100%\" cellspacing=\"0\" cellpadding=\"4\" border=\"1\">\n" +
+    public String convertToTable(Collection<Department> departmentsList) {
+        StringBuilder result = new StringBuilder("<table width=\"100%\" cellspacing=\"0\" cellpadding=\"4\" border=\"1\">\n" +
                 "    <tr>\n" +
                 "        <th>\n" +
                 "            ID\n" +
@@ -35,12 +38,12 @@ public class DepartmentTableGenerator implements IDepartmentTableGenerator {
                 "        <th>\n" +
                 "            Name\n" +
                 "        </th>\n" +
-                "    </tr>\n";
-        for (int i = 0; i < departmentsList.size(); i++) {
-            result += convertToRow(departmentsList.get(i));
-            result += "\n";
+                "    </tr>\n");
+        for (Department department : departmentsList) {
+            result.append(convertToRow(department));
+            result.append("\n");
         }
-        result += "</table>";
-        return result;
+        result.append("</table>");
+        return result.toString();
     }
 }

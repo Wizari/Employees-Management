@@ -2,6 +2,7 @@ package org.r78.employeesmanagement.utils;
 
 import org.r78.employeesmanagement.domain.Department;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface IDepartmentTableGenerator {
@@ -17,6 +18,6 @@ public interface IDepartmentTableGenerator {
      * @param departmentsList Сериализуемая сущность
      * @return html код <table> ... </table>
      */
-    String convertToTable(List<Department> departmentsList);
+    String convertToTable(Collection<Department> departmentsList);
 
 }

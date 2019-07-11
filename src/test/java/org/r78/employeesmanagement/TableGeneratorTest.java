@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.r78.employeesmanagement.domain.Department;
 import org.r78.employeesmanagement.utils.DepartmentTableGenerator;
 import org.r78.employeesmanagement.utils.IDepartmentTableGenerator;
+import org.r78.employeesmanagement.utils.ITableGenerator;
+import org.r78.employeesmanagement.utils.TableGenerator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +15,13 @@ import static org.junit.Assert.assertEquals;
 
 @Slf4j
 public class TableGeneratorTest {
+
+    @Test
+    public void generalTableGeneratorTest() {
+        ITableGenerator tableGenerator = new TableGenerator();
+        System.out.println(tableGenerator.convertToRow(new Department(1L, "A")));
+    }
+
     @Test
     public void simpleTest() {
         IDepartmentTableGenerator generator = new DepartmentTableGenerator();
